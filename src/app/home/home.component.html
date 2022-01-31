@@ -1,0 +1,35 @@
+<ejs-treegrid height='500' [dataSource]='data' #treegrid [editSettings]='editSettings' [allowPaging]='false' [treeColumnIndex]='1'
+    [treeColumnIndex]='1' childMapping='subtasks' [allowFiltering]="isFilter" [allowResizing]='true'
+    [allowSorting]="isAllowSorting" [allowExcelExport]='true' [allowPdfExport]='true' [showColumnChooser]='true'
+    [allowRowDragAndDrop]='true' [toolbar]="toolbar" allowReordering='true' [selectionSettings]='selectOptions'
+    [frozenColumns]='frozenColumns' [allowResizing]="allowResizing">
+    <e-columns>
+        <e-column field='taskID' headerText='Task ID' textAlign='Right'></e-column>
+        <e-column field='taskName' headerText='Task Name' textAlign='Left'></e-column>
+        <e-column field='approved' headerText='Approved' width='90' editType='booleanedit' type='boolean'
+            displayAsCheckBox='true'></e-column>
+        <e-column field='startDate' headerText='Start Date' textAlign='Right' format='yMd'></e-column>
+        <e-column field='duration' headerText='Duration' textAlign='Right'></e-column>
+    </e-columns>
+</ejs-treegrid>
+
+
+<div>
+    <ejs-contextmenu #headercontextmenu target='.e-gridheader' [items]='headermenuItems' (beforeItemRender)='itemRender($event)' 
+        (beforeOpen)='beforeOpen($event)' (beforeClose)='beforeClose($event)' (select)='select($event)'></ejs-contextmenu>
+</div>
+<div>
+    <ejs-contextmenu #contextmenu target='.e-content' [items]='menuItems' (select)='select($event)'></ejs-contextmenu>
+</div>
+
+
+
+[contextMenuItems]='contextMenuItems' (contextMenuClick)='contextMenuClick($event)'
+(contextMenuOpen)='contextMenuOpen($event)'
+
+
+
+
+<!-- <div id="target" style="height:200px">Right click / Touch hold to open the ContextMenu</div>
+<ejs-contextmenu (beforeItemRender)='itemRender($event)' id='contextmenu' [target]='target' [items]='menuItems'
+    (beforeClose)='beforeClose($event)'></ejs-contextmenu> -->
